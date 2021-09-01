@@ -1,6 +1,10 @@
 import * as React from 'react'
-import { Category } from './components/Category'
+import { ListOfCategories } from './components/ListOfCategories'
+import { GlobalStyle } from './GlobalStyle'
 
-export const App = () => {
-  return <Category path="sfjsl" />
-}
+export const App = () => (
+  <>
+    <GlobalStyle />
+    <ListOfCategories />
+  </>
+)
