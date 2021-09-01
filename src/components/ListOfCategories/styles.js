@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const List = styled.ul`
   display: flex;
+  padding: 0 20px;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
