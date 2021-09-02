@@ -1,16 +1,11 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { useFetch } from '../../hooks/useFetch'
+import { useCategoriesData } from '../../hooks/useCategoriesData'
 import { Category } from '../Category'
 import { Item, List } from './styles'
 
 export const ListOfCategories = () => {
-  const {
-    data: categories,
-    loading,
-    error,
-  } = useFetch('https://petgram-server-mestra.vercel.app/categories')
-
+  const { loading, categories } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
@@ -25,16 +20,19 @@ export const ListOfCategories = () => {
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
-      {categories?.map((category) => (
-        <Item key={category.id}>
-          <Category {...category} />
+      {loading ? (
+        <Item key="loading">
+          <Category />
         </Item>
-      ))}
+      ) : (
+        categories?.map((category) => (
+          <Item key={category.id}>
+            <Category {...category} />
+          </Item>
+        ))
+      )}
     </List>
   )
-
-  if (loading) return <p>loadin...</p>
-  if (error) return <p>!Error!</p>
 
   return (
     <>
