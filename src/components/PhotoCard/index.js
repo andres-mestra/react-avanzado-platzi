@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useLocalStorage } from '../../hooks/useLocaStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
+import { singlePhotoQuery } from '../../queries/singlePhotoQuery'
 import { Article, Button, Img, ImgWrapper } from './styles'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 
@@ -18,7 +19,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     <Article ref={element}>
       {show && (
         <>
-          <a href={`/detail/${id}`}>
+          <a href={`/?detail=${id}`}>
             <ImgWrapper>
               <Img src={src} />
             </ImgWrapper>
@@ -31,4 +32,13 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       )}
     </Article>
   )
+}
+
+export const SinglePhotoCard = ({ id }) => {
+  const { data, loading } = singlePhotoQuery(id)
+
+  if (loading) return 'Loading...'
+
+  const photo = data.photo
+  return <PhotoCard {...photo} />
 }
