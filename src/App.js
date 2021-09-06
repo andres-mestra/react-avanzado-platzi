@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCard } from './components/ListOfPhotoCard'
 import { Logo } from './components/Logo'
 import { SinglePhotoCard } from './components/PhotoCard'
+import { Routes } from './routes'
 import { GlobalStyle } from './styles/GlobalStyle'
 
 export const App = () => {
@@ -13,14 +12,7 @@ export const App = () => {
     <>
       <Logo />
       <GlobalStyle />
-      {detailId ? (
-        <SinglePhotoCard id={detailId} />
-      ) : (
-        <>
-          <ListOfCategories />
-          <ListOfPhotoCard />
-        </>
-      )}
+      {detailId ? <SinglePhotoCard id={detailId} /> : <Routes />}
     </>
   )
 }
