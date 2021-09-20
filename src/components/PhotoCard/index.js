@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useLocalStorage } from '../../hooks/useLocaStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { singlePhotoQuery } from '../../queries/singlePhotoQuery'

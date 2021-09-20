@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { photosQuery } from '../../queries/photosQuery'
 import { PhotoCard } from '../PhotoCard'
 import { List } from './styles'

@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { Button } from './styles'
 

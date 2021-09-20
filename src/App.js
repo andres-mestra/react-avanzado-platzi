@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Logo } from './components/Logo'
 import { Routes } from './routes'
 import { GlobalStyle } from './styles/GlobalStyle'

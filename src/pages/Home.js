@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCard } from '../components/ListOfPhotoCard'
 

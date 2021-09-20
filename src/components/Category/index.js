@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Link, Image } from './styles'
 
 const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpg'
