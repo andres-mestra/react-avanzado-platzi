@@ -1,11 +1,8 @@
 import { useAuthContext } from '../hooks/useAuthContext'
+import { UserForm } from '../components/UserForm'
 
 export const NoRegisteredUser = () => {
   const { isAuth, activateAuth } = useAuthContext()
 
-  return (
-    <form onSubmit={activateAuth}>
-      <button type="submit">Iniciar sesión</button>
-    </form>
-  )
+  return <UserForm onSubmit={activateAuth} title="Registrarse" />
 }
