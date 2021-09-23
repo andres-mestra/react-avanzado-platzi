@@ -12,7 +12,7 @@ export const registerMutation = () => {
 
   const handleRegister = ({ email, password }) => {
     const input = { email, password }
-    signup({
+    return signup({
       variables: { input },
     })
   }

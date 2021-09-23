@@ -1,7 +1,7 @@
 import { useForm } from '../../hooks/useForm'
-import { Button, Form, Input, Section, Title } from './styles'
+import { Button, Error, Form, Input, Section, Title } from './styles'
 
-export const UserForm = ({ onSubmit, title }) => {
+export const UserForm = ({ onSubmit, title, error, disabled }) => {
   const [values, handleChange] = useForm({
     email: '',
     password: '',
@@ -16,13 +16,14 @@ export const UserForm = ({ onSubmit, title }) => {
 
   return (
     <Section>
-      <Title>{title}</Title>
-      <Form onSubmit={handleSubmit}>
+      <Form disabled={disabled} onSubmit={handleSubmit}>
+        <Title>{title}</Title>
         <Input
           name="email"
           placeholder="Email"
           type="email"
           required
+          disabled={disabled}
           value={email}
           onChange={handleChange}
         />
@@ -31,11 +32,15 @@ export const UserForm = ({ onSubmit, title }) => {
           placeholder="Password"
           type="password"
           required
+          disabled={disabled}
           value={password}
           onChange={handleChange}
         />
-        <Button type="submit">{title}</Button>
+        <Button disabled={disabled} type="submit">
+          {title}
+        </Button>
       </Form>
+      {error && <Error>{error}</Error>}
     </Section>
   )
 }
