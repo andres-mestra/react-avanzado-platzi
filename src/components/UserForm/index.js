@@ -9,10 +9,15 @@ export const UserForm = ({ onSubmit, title }) => {
 
   const { email, password } = values
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    onSubmit({ email, password })
+  }
+
   return (
     <Section>
       <Title>{title}</Title>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           name="email"
           placeholder="Email"
