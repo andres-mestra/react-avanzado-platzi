@@ -1,4 +1,4 @@
-import { useLocalStorage } from '../../hooks/useLocaStorage'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { singlePhotoQuery } from '../../queries/singlePhotoQuery'
 import { toggleLikeMutation } from '../../mutations/toggleLikeMutation'
