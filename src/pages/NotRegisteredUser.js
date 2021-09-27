@@ -4,27 +4,31 @@ import { registerMutation } from '../mutations/registerMutation'
 import { loginMutation } from '../mutations/loginMutation'
 
 export const NoRegisteredUser = () => {
-  const { isAuth, activateAuth } = useAuthContext()
+  const { activateAuth } = useAuthContext()
   const {
     handleRegister,
-    token: tokenRegister,
     error: errorRegister,
     loading: loadingRegister,
   } = registerMutation()
 
   const {
     handleLogin,
-    token: tokenLogin,
     error: errorLogin,
     loading: loadingLogin,
   } = loginMutation()
 
   const handleSubmitRegister = ({ email, password }) => {
-    handleRegister({ email, password }).then(activateAuth)
+    handleRegister({ email, password }).then(({ data }) => {
+      const { signup } = data
+      activateAuth(signup)
+    })
   }
 
   const handleSubmitLogin = ({ email, password }) => {
-    handleLogin({ email, password }).then(activateAuth)
+    handleLogin({ email, password }).then(({ data }) => {
+      const { login } = data
+      activateAuth(login)
+    })
   }
 
   const errorMsgRegister =
