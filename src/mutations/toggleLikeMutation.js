@@ -1,8 +1,8 @@
 import { useMutation, gql } from '@apollo/client'
 
 const LIKE_PHOTO = gql`
-  mutation likeAnonymousPhoto($input: LikePhoto!) {
-    likeAnonymousPhoto(input: $input) {
+  mutation likePhoto($input: LikePhoto!) {
+    likePhoto(input: $input) {
       src
       likes
       liked
@@ -11,22 +11,26 @@ const LIKE_PHOTO = gql`
 `
 
 export const toggleLikeMutation = () => {
-  const [likeAnonymousPhoto, { data, loading, error }] = useMutation(LIKE_PHOTO)
+  const [likePhoto, { data, loading, error }] = useMutation(LIKE_PHOTO)
 
   const updateCache = (cache, result, id) => {
+    const { likes, liked } = result
+
     cache.writeQuery({
       query: gql`
         query WritePhoto($id: Int!) {
           photo(id: $id) {
             likes
+            liked
           }
         }
       `,
       data: {
         photo: {
           __typename: 'Photo',
-          id: id,
-          likes: result.likes,
+          id,
+          likes,
+          liked,
         },
       },
       variables: {
@@ -36,12 +40,12 @@ export const toggleLikeMutation = () => {
   }
 
   const toggleLike = (id) => {
-    likeAnonymousPhoto({
+    likePhoto({
       variables: {
         input: { id },
       },
-      update: (cache, { data: { likeAnonymousPhoto } }) =>
-        updateCache(cache, likeAnonymousPhoto, id),
+      update: (cache, { data: { likePhoto } }) =>
+        updateCache(cache, likePhoto, id),
     })
   }
 

@@ -5,15 +5,26 @@ import {
   ApolloProvider,
   HttpLink,
 } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
-const link = new HttpLink({
+const httpLink = new HttpLink({
   uri: 'https://petgram-server-mestra.vercel.app/graphql',
-  fetch,
+})
+
+const authLink = setContext((_, { headers }) => {
+  const token = window.sessionStorage.getItem('token')
+  const authorization = token ? `Bearer ${token}` : ''
+  return {
+    headers: {
+      ...headers,
+      authorization,
+    },
+  }
 })
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link,
+  link: authLink.concat(httpLink),
 })
 
 export const Apollo = ({ children }) => {
