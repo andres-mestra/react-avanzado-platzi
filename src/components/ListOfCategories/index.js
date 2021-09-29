@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useCategoriesData } from '../../hooks/useCategoriesData'
 import { Category } from '../Category'
 import { Item, List } from './styles'
 
-export const ListOfCategories = () => {
-  const { loading, categories } = useCategoriesData()
+export const ListOfCategories = ({ loading, categories }) => {
   const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
