@@ -2,6 +2,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { UserForm } from '../components/UserForm'
 import { registerMutation } from '../mutations/registerMutation'
 import { loginMutation } from '../mutations/loginMutation'
+import { HelmetMeta } from '../components/HelmetMeta'
 
 export const NoRegisteredUser = () => {
   const { activateAuth } = useAuthContext()
@@ -37,6 +38,10 @@ export const NoRegisteredUser = () => {
 
   return (
     <>
+      <HelmetMeta
+        title="Petgram - Inicia sessión o registrate"
+        description="Se parte de nuestra comunidad"
+      />
       <UserForm
         error={errorMsgRegister}
         disabled={loadingRegister}
