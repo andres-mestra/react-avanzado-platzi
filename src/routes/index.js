@@ -1,4 +1,4 @@
-import { Router } from '@reach/router'
+import { Redirect, Router } from '@reach/router'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { Home } from '../pages/Home'
 import { Detail } from '../pages/Detail'
@@ -16,18 +16,12 @@ export const Routes = () => {
         <Home path="/" />
         <Home path="/pet/:id" />
         <Detail path="/detail/:id" />
+        {!isAuth && <NoRegisteredUser path="/login" />}
+        {!isAuth && <Redirect from="/favs" to="/login" />}
+        {!isAuth && <Redirect from="/user" to="/login" />}
+        <Favs path="/favs" />
+        <User path="/user" />
       </Router>
-      {isAuth ? (
-        <Router>
-          <Favs path="/favs" />
-          <User path="/user" />
-        </Router>
-      ) : (
-        <Router>
-          <NoRegisteredUser path="/favs" />
-          <NoRegisteredUser path="/user" />
-        </Router>
-      )}
       <NavBar />
     </>
   )
