@@ -4,7 +4,7 @@ import { registerMutation } from '../mutations/registerMutation'
 import { loginMutation } from '../mutations/loginMutation'
 import { HelmetMeta } from '../components/HelmetMeta'
 
-export const NoRegisteredUser = () => {
+const NoRegisteredUser = () => {
   const { activateAuth } = useAuthContext()
   const {
     handleRegister,
@@ -57,3 +57,5 @@ export const NoRegisteredUser = () => {
     </>
   )
 }
+
+export default NoRegisteredUser

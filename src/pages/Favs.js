@@ -2,7 +2,7 @@ import { HelmetMeta } from '../components/HelmetMeta'
 import { ListOfFavs } from '../components/ListOfFavs'
 import { getFavsQuery } from '../queries/getFavsQuery'
 
-export const Favs = () => {
+const Favs = () => {
   const { data } = getFavsQuery()
 
   const favs = data?.favs ?? []
@@ -18,3 +18,5 @@ export const Favs = () => {
     </>
   )
 }
+
+export default Favs

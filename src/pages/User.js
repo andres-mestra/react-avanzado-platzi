@@ -3,7 +3,7 @@ import { HelmetMeta } from '../components/HelmetMeta'
 import { SubmitButton } from '../components/SubmitButton'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-export const User = () => {
+const User = () => {
   const { removeAuth } = useAuthContext()
   const client = useApolloClient()
 
@@ -23,3 +23,5 @@ export const User = () => {
     </>
   )
 }
+
+export default User

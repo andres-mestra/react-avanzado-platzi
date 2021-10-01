@@ -19,6 +19,8 @@ const HomePage = ({ id }) => {
   )
 }
 
-export const Home = memo(HomePage, (prevProps, props) => {
+const Home = memo(HomePage, (prevProps, props) => {
   return prevProps.id === props.id
 })
+
+export default Home

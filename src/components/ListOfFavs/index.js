@@ -1,7 +1,6 @@
 import { Grid, Link, Image } from './styles'
 
 export const ListOfFavs = ({ favs = [] }) => {
-  console.log(favs)
   return (
     <Grid>
       {favs.map((fav) => (

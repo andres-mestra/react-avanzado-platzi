@@ -1,6 +1,6 @@
 import { HelmetMeta } from '../components/HelmetMeta'
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <HelmetMeta
@@ -11,3 +11,5 @@ export const NotFound = () => {
     </>
   )
 }
+
+export default NotFound

@@ -1,7 +1,7 @@
 import { HelmetMeta } from '../components/HelmetMeta'
 import { SinglePhotoCard } from '../components/PhotoCard'
 
-export const Detail = ({ id }) => {
+const Detail = ({ id }) => {
   return (
     <>
       <HelmetMeta title={`Petgram - Fotografia ${id}`} />
@@ -9,3 +9,5 @@ export const Detail = ({ id }) => {
     </>
   )
 }
+
+export default Detail
