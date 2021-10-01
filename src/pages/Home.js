@@ -2,8 +2,9 @@ import { useCategoriesData } from '../hooks/useCategoriesData'
 import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCard } from '../components/ListOfPhotoCard'
 import { HelmetMeta } from '../components/HelmetMeta'
+import { memo } from 'react'
 
-export const Home = ({ id }) => {
+const HomePage = ({ id }) => {
   const { loading, categories } = useCategoriesData()
 
   return (
@@ -17,3 +18,7 @@ export const Home = ({ id }) => {
     </>
   )
 }
+
+export const Home = memo(HomePage, (prevProps, props) => {
+  return prevProps.id === props.id
+})

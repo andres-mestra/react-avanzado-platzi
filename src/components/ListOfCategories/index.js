@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Category } from '../Category'
 import { Item, List } from './styles'
 
-export const ListOfCategories = ({ loading, categories }) => {
+const ListOfCategoriesComponent = ({ loading, categories }) => {
   const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
@@ -38,3 +38,5 @@ export const ListOfCategories = ({ loading, categories }) => {
     </>
   )
 }
+
+export const ListOfCategories = memo(ListOfCategoriesComponent)
